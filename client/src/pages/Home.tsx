@@ -1,5 +1,5 @@
 import { Link } from "wouter";
-import { Wrench, Package, Droplet, ArrowRight, Star, ShieldCheck, Truck } from "lucide-react";
+import { Wrench, Package, Droplet, ArrowRight, Star, ShieldCheck, Truck, Settings, Gauge, Zap, ShoppingBag } from "lucide-react";
 import { TechButton, TechCard, SectionTitle } from "@/components/ui/tech-components";
 
 export default function Home() {
@@ -8,6 +8,21 @@ export default function Home() {
       icon: Wrench, 
       title: 'Service & Repairs', 
       desc: 'Expert maintenance for all makes and models. From routine servicing to complex engine rebuilds, our experienced team keeps your bike running at its peak.' 
+    },
+    { 
+      icon: Settings, 
+      title: 'Specialist Restoration', 
+      desc: 'Dedicated restoration services including specialist brake restoration and carburetor restoration to bring your classic components back to life.' 
+    },
+    { 
+      icon: Gauge, 
+      title: 'Precision Balancing', 
+      desc: 'Professional carburetor balancing and throttle body balancing to ensure smooth power delivery and optimal engine performance.' 
+    },
+    { 
+      icon: Zap, 
+      title: 'Ultrasonic Cleaning', 
+      desc: 'Deep cleaning for intricate parts using advanced ultrasonic technology, perfect for carburetors, injectors, and brake components.' 
     },
     { 
       icon: Package, 
@@ -28,7 +43,7 @@ export default function Home() {
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <img 
-            src="/images/hero-bg.jpg" 
+            src="/images/hero-bg-v2.jpg" 
             alt="Motorcycle Workshop" 
             className="w-full h-full object-cover"
           />
@@ -42,7 +57,7 @@ export default function Home() {
             <img 
               src="/images/logo-transparent.png" 
               alt="B&L Motorcycles Logo" 
-              className="w-32 h-auto mx-auto mb-6 drop-shadow-[0_0_15px_rgba(211,192,101,0.3)]" 
+              className="w-64 h-auto mx-auto mb-8 drop-shadow-[0_0_25px_rgba(211,192,101,0.4)]" 
             />
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-heading font-bold text-white uppercase tracking-tight mb-2">
               Welcome to <span className="text-primary">BL Motorcycles</span>
@@ -167,6 +182,38 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Shop Section (New) */}
+      <section className="py-20 bg-black border-y border-primary/10">
+        <div className="container mx-auto px-4 text-center">
+          <SectionTitle subtitle="Browse Our Inventory">Shop Parts</SectionTitle>
+          
+          <div className="max-w-4xl mx-auto bg-card border border-primary/20 p-8 md:p-12 relative overflow-hidden">
+            <div className="absolute top-0 right-0 w-32 h-32 bg-primary/10 rounded-full blur-3xl -mr-16 -mt-16" />
+            <div className="absolute bottom-0 left-0 w-32 h-32 bg-primary/10 rounded-full blur-3xl -ml-16 -mb-16" />
+            
+            <ShoppingBag className="w-16 h-16 text-primary mx-auto mb-6" />
+            <h3 className="text-3xl font-heading font-bold text-white uppercase mb-4">
+              Online Store Coming Soon
+            </h3>
+            <p className="text-xl text-gray-300 mb-8 leading-relaxed">
+              In the meantime, contact us for any requests or check our eBay store. <br/>
+              <span className="text-primary font-bold">We have 10s of thousands of products available.</span>
+            </p>
+            
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link href="/contact">
+                <TechButton size="lg">Contact Us</TechButton>
+              </Link>
+              <a href="https://ebay.us/m/zVcLaj" target="_blank" rel="noopener noreferrer">
+                <TechButton variant="outline" size="lg" className="gap-2">
+                  Visit eBay Store <ArrowRight className="w-4 h-4" />
+                </TechButton>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Products Section */}
       <section className="py-20 bg-black">
         <div className="container mx-auto px-4">
@@ -202,7 +249,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Gallery Section (New) */}
+      {/* Gallery Section */}
       <section className="py-20 bg-secondary relative">
         <div className="container mx-auto px-4">
           <SectionTitle subtitle="Our Work">Gallery</SectionTitle>
