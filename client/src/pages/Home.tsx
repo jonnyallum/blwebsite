@@ -40,7 +40,7 @@ export default function Home() {
         <div className="relative z-10 container mx-auto px-4 text-center">
           <div className="mb-8 animate-in fade-in zoom-in duration-1000">
             <img 
-              src="https://i.ibb.co/d4QmDmTR/B-L-Motorcycles-Logo-Design.png" 
+              src="/images/logo-transparent.png" 
               alt="B&L Motorcycles Logo" 
               className="w-32 h-auto mx-auto mb-6 drop-shadow-[0_0_15px_rgba(211,192,101,0.3)]" 
             />
@@ -88,7 +88,7 @@ export default function Home() {
             <div className="relative">
               <div className="absolute -inset-4 bg-primary/5 rounded-lg transform -rotate-2" />
               <img 
-                src="/images/about-workshop.jpg" 
+                src="/images/user-image-4.jpg" 
                 alt="Our Workshop" 
                 className="relative rounded-lg shadow-2xl border border-gray-800 grayscale hover:grayscale-0 transition-all duration-500"
               />
@@ -193,7 +193,7 @@ export default function Home() {
             <div className="order-1 md:order-2 relative">
               <div className="absolute inset-0 bg-primary/10 transform translate-x-4 translate-y-4 border border-primary/20" />
               <img 
-                src="/images/parts-bg.jpg" 
+                src="/images/user-image-5.jpg" 
                 alt="Motorcycle Parts" 
                 className="relative w-full h-auto border border-gray-800 grayscale hover:grayscale-0 transition-all duration-500"
               />
@@ -202,8 +202,47 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Gallery Section (New) */}
+      <section className="py-20 bg-secondary relative">
+        <div className="container mx-auto px-4">
+          <SectionTitle subtitle="Our Work">Gallery</SectionTitle>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div className="relative group overflow-hidden h-64 md:h-80">
+              <img 
+                src="/images/user-image-1.png" 
+                alt="Gallery Image 1" 
+                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+              />
+              <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center border border-primary/20">
+                <p className="text-primary font-heading font-bold uppercase tracking-wider">View Project</p>
+              </div>
+            </div>
+            <div className="relative group overflow-hidden h-64 md:h-80">
+              <img 
+                src="/images/user-image-2.jpg" 
+                alt="Gallery Image 2" 
+                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+              />
+              <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center border border-primary/20">
+                <p className="text-primary font-heading font-bold uppercase tracking-wider">View Project</p>
+              </div>
+            </div>
+            <div className="relative group overflow-hidden h-64 md:h-80">
+              <img 
+                src="/images/user-image-3.png" 
+                alt="Gallery Image 3" 
+                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+              />
+              <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center border border-primary/20">
+                <p className="text-primary font-heading font-bold uppercase tracking-wider">View Project</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Mission Section */}
-      <section className="py-20 bg-secondary relative overflow-hidden">
+      <section className="py-20 bg-black relative overflow-hidden">
         <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
         <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
         

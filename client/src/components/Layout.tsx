@@ -43,7 +43,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           <Link href="/">
             <a className="flex items-center gap-3 group">
               <img
-                src="https://i.ibb.co/d4QmDmTR/B-L-Motorcycles-Logo-Design.png"
+                src="/images/logo-transparent.png"
                 alt="B&L Motorcycles"
                 className="w-12 h-12 object-contain transition-transform group-hover:scale-105"
               />
@@ -135,7 +135,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             {/* Brand */}
             <div>
               <img
-                src="https://i.ibb.co/d4QmDmTR/B-L-Motorcycles-Logo-Design.png"
+                src="/images/logo-transparent.png"
                 alt="B&L Motorcycles"
                 className="w-24 h-auto mb-6"
               />
