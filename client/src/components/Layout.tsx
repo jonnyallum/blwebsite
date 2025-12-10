@@ -199,6 +199,45 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             </div>
           </div>
 
+          {/* Instagram Feed Section */}
+          <div className="border-t border-gray-800 pt-12 pb-8">
+            <div className="flex items-center justify-between mb-6">
+              <h4 className="text-primary font-heading font-bold text-lg uppercase tracking-wider flex items-center gap-2">
+                <Instagram className="w-5 h-5" /> Latest from Instagram
+              </h4>
+              <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" className="text-xs font-mono uppercase tracking-wider text-gray-400 hover:text-primary transition-colors">
+                View Profile →
+              </a>
+            </div>
+            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
+              {[
+                '/images/user-image-1.png',
+                '/images/user-image-2.jpg',
+                '/images/user-image-3.png',
+                '/images/user-image-4.jpg',
+                '/images/user-image-12.jpg',
+                '/images/user-image-13.jpg'
+              ].map((img, i) => (
+                <a 
+                  key={i} 
+                  href="https://www.instagram.com/" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="group relative aspect-square overflow-hidden bg-gray-900 border border-gray-800"
+                >
+                  <img 
+                    src={img} 
+                    alt="Latest motorcycle project" 
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 opacity-70 group-hover:opacity-100"
+                  />
+                  <div className="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                    <Instagram className="w-6 h-6 text-white drop-shadow-lg" />
+                  </div>
+                </a>
+              ))}
+            </div>
+          </div>
+
           <div className="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-gray-500 font-mono uppercase tracking-wider">
             <p>© 2025 B&L Motorcycles Ltd. All rights reserved.</p>
             <p>B&L Motorcycles – Trusted Parts & Repairs UK</p>
