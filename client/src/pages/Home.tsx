@@ -7,33 +7,48 @@ export default function Home() {
     { 
       icon: Wrench, 
       title: 'Service & Repairs', 
-      desc: 'Expert maintenance for all makes and models. From routine servicing to complex engine rebuilds, our experienced team keeps your bike running at its peak.' 
+      desc: 'Expert maintenance for all makes and models. From routine servicing to complex engine rebuilds, our experienced team keeps your bike running at its peak.',
+      image: '/images/user-image-6.jpg'
     },
     { 
       icon: Settings, 
       title: 'Specialist Restoration', 
-      desc: 'Dedicated restoration services including specialist brake restoration and carburetor restoration to bring your classic components back to life.' 
+      desc: 'Dedicated restoration services including specialist brake restoration and carburetor restoration to bring your classic components back to life.',
+      image: '/images/user-image-7.jpg'
     },
     { 
       icon: Gauge, 
       title: 'Precision Balancing', 
-      desc: 'Professional carburetor balancing and throttle body balancing to ensure smooth power delivery and optimal engine performance.' 
+      desc: 'Professional carburetor balancing and throttle body balancing to ensure smooth power delivery and optimal engine performance.',
+      image: '/images/user-image-8.jpg'
     },
     { 
       icon: Zap, 
       title: 'Ultrasonic Cleaning', 
-      desc: 'Deep cleaning for intricate parts using advanced ultrasonic technology, perfect for carburetors, injectors, and brake components.' 
+      desc: 'Deep cleaning for intricate parts using advanced ultrasonic technology, perfect for carburetors, injectors, and brake components.',
+      image: '/images/user-image-9.jpg'
     },
     { 
       icon: Package, 
       title: 'New & Used Parts', 
-      desc: 'Quality parts at competitive prices. We stock a wide range of second-hand motorcycle spares, fully inspected and ready for your ride.' 
+      desc: 'Quality parts at competitive prices. We stock a wide range of second-hand motorcycle spares, fully inspected and ready for your ride.',
+      image: '/images/user-image-10.jpg'
     },
     { 
       icon: Droplet, 
       title: 'Engine Oil', 
-      desc: 'Premium oils and fluids for optimal performance. We supply top-grade lubricants to ensure your engine stays protected and powerful.' 
+      desc: 'Premium oils and fluids for optimal performance. We supply top-grade lubricants to ensure your engine stays protected and powerful.',
+      image: '/images/user-image-11.jpg'
     }
+  ];
+
+  const galleryImages = [
+    '/images/user-image-1.png',
+    '/images/user-image-2.jpg',
+    '/images/user-image-3.png',
+    '/images/user-image-12.jpg',
+    '/images/user-image-13.jpg',
+    '/images/user-image-4.jpg'
   ];
 
   return (
@@ -157,16 +172,26 @@ export default function Home() {
           
           <div className="grid md:grid-cols-3 gap-8">
             {services.map((service, i) => (
-              <TechCard key={i} className="h-full flex flex-col items-center text-center group">
-                <div className="w-16 h-16 rounded-full bg-black border border-primary/30 flex items-center justify-center mb-6 group-hover:border-primary group-hover:scale-110 transition-all duration-300">
-                  <service.icon className="w-8 h-8 text-primary" />
+              <TechCard key={i} className="h-full flex flex-col overflow-hidden group p-0">
+                <div className="h-48 w-full overflow-hidden relative">
+                  <img 
+                    src={service.image} 
+                    alt={service.title}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  />
+                  <div className="absolute inset-0 bg-black/50 group-hover:bg-black/30 transition-colors duration-300" />
+                  <div className="absolute bottom-4 left-4 w-12 h-12 rounded-full bg-black border border-primary/30 flex items-center justify-center group-hover:border-primary transition-all duration-300 z-10">
+                    <service.icon className="w-6 h-6 text-primary" />
+                  </div>
                 </div>
-                <h3 className="text-xl font-heading font-bold text-white uppercase mb-4 group-hover:text-primary transition-colors">
-                  {service.title}
-                </h3>
-                <p className="text-gray-400 leading-relaxed text-sm">
-                  {service.desc}
-                </p>
+                <div className="p-6 flex flex-col flex-grow">
+                  <h3 className="text-xl font-heading font-bold text-white uppercase mb-4 group-hover:text-primary transition-colors">
+                    {service.title}
+                  </h3>
+                  <p className="text-gray-400 leading-relaxed text-sm">
+                    {service.desc}
+                  </p>
+                </div>
               </TechCard>
             ))}
           </div>
@@ -182,7 +207,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Shop Section (New) */}
+      {/* Shop Section */}
       <section className="py-20 bg-black border-y border-primary/10">
         <div className="container mx-auto px-4 text-center">
           <SectionTitle subtitle="Browse Our Inventory">Shop Parts</SectionTitle>
@@ -254,36 +279,18 @@ export default function Home() {
         <div className="container mx-auto px-4">
           <SectionTitle subtitle="Our Work">Gallery</SectionTitle>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <div className="relative group overflow-hidden h-64 md:h-80">
-              <img 
-                src="/images/user-image-1.png" 
-                alt="Gallery Image 1" 
-                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-              />
-              <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center border border-primary/20">
-                <p className="text-primary font-heading font-bold uppercase tracking-wider">View Project</p>
+            {galleryImages.map((img, i) => (
+              <div key={i} className="relative group overflow-hidden h-64 md:h-80">
+                <img 
+                  src={img} 
+                  alt={`Gallery Image ${i + 1}`} 
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center border border-primary/20">
+                  <p className="text-primary font-heading font-bold uppercase tracking-wider">View Project</p>
+                </div>
               </div>
-            </div>
-            <div className="relative group overflow-hidden h-64 md:h-80">
-              <img 
-                src="/images/user-image-2.jpg" 
-                alt="Gallery Image 2" 
-                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-              />
-              <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center border border-primary/20">
-                <p className="text-primary font-heading font-bold uppercase tracking-wider">View Project</p>
-              </div>
-            </div>
-            <div className="relative group overflow-hidden h-64 md:h-80">
-              <img 
-                src="/images/user-image-3.png" 
-                alt="Gallery Image 3" 
-                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-              />
-              <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center border border-primary/20">
-                <p className="text-primary font-heading font-bold uppercase tracking-wider">View Project</p>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>
