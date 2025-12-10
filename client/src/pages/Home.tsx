@@ -20,25 +20,25 @@ export default function Home() {
       icon: Gauge, 
       title: 'Precision Balancing', 
       desc: 'Professional carburetor balancing and throttle body balancing to ensure smooth power delivery and optimal engine performance.',
-      image: '/images/services-bg.jpg'
+      image: '/images/balancing-gauges.jpg'
     },
     { 
       icon: Zap, 
       title: 'Ultrasonic Cleaning', 
       desc: 'Deep cleaning for intricate parts using advanced ultrasonic technology, perfect for carburetors, injectors, and brake components.',
-      image: '/images/parts-bg.jpg'
+      image: '/images/ultrasonic-clean.jpg'
     },
     { 
       icon: Package, 
       title: 'New & Used Parts', 
       desc: 'Quality parts at competitive prices. We stock a wide range of second-hand motorcycle spares, fully inspected and ready for your ride.',
-      image: '/images/user-image-10.jpg'
+      image: '/images/user-image-11.jpg'
     },
     { 
       icon: Droplet, 
       title: 'Brake Restoration', 
       desc: 'Complete brake system restoration and rebuilding. We strip, clean, and rebuild calipers and master cylinders to factory standards for safety and performance.',
-      image: '/images/user-image-11.jpg'
+      image: '/images/user-image-10.jpg'
     },
     { 
       icon: Settings, 
