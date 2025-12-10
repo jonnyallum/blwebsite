@@ -1,5 +1,6 @@
 import { useLocation, Link } from "wouter";
 import { TechButton, SectionTitle } from "@/components/ui/tech-components";
+import { BookingForm } from "@/components/BookingForm";
 
 export default function Placeholder() {
   const [location] = useLocation();
@@ -70,6 +71,12 @@ export default function Placeholder() {
              </Link>
           )}
         </div>
+
+        {location === '/services' && (
+          <div className="mt-16 w-full max-w-2xl mx-auto animate-in fade-in slide-in-from-bottom-10 duration-700">
+            <BookingForm />
+          </div>
+        )}
       </div>
     </div>
   );
