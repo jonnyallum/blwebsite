@@ -7,13 +7,13 @@ export default function Home() {
     { 
       icon: Wrench, 
       title: 'Service & Repairs', 
-      desc: 'Expert maintenance for all makes and models. From routine servicing to complex engine rebuilds, our experienced team keeps your bike running at its peak.',
+      desc: 'Expert maintenance for all makes and models. From routine servicing to complex engine rebuilds, our experienced team keeps your bike running at its peak. Serving riders across Portsmouth, Fareham, and the wider Hampshire area.',
       image: '/images/user-image-6.jpg'
     },
     { 
       icon: Settings, 
       title: 'Specialist Restoration', 
-      desc: 'Dedicated restoration services including specialist brake restoration and carburetor restoration to bring your classic components back to life.',
+      desc: 'Dedicated restoration services including specialist brake restoration and carburetor restoration. We are the go-to carb specialists in Portsmouth and Southampton for bringing classic components back to life.',
       image: '/images/user-image-7.jpg'
     },
     { 
@@ -59,7 +59,7 @@ export default function Home() {
         <div className="absolute inset-0 z-0">
           <img 
             src="/images/hero-bg-v2.jpg" 
-            alt="Motorcycle Workshop" 
+            alt="Motorcycle workshop offering expert repairs and servicing in Hampshire and Portsmouth" 
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-black/70" />
@@ -71,7 +71,7 @@ export default function Home() {
           <div className="mb-8 animate-in fade-in zoom-in duration-1000">
             <img 
               src="/images/logo-transparent.png" 
-              alt="B&L Motorcycles Logo" 
+              alt="B&L Motorcycles - Trusted Motorcycle Parts and Repairs in Fareham" 
               className="w-64 h-auto mx-auto mb-8 drop-shadow-[0_0_25px_rgba(211,192,101,0.4)]" 
             />
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-heading font-bold text-white uppercase tracking-tight mb-2">
@@ -84,7 +84,7 @@ export default function Home() {
 
           <div className="max-w-3xl mx-auto mb-12 animate-in slide-in-from-bottom-10 duration-1000 delay-300">
             <p className="text-gray-300 leading-relaxed text-lg mb-8">
-              At B&L Motorcycles, we specialise in supplying high-quality used motorcycle parts at affordable prices. Based in Hampshire, we’re a family-run business passionate about bikes, offering expert service, fast UK delivery, and reliable repairs.
+              At B&L Motorcycles, we specialise in supplying high-quality used motorcycle parts at affordable prices. Based in Hampshire, we’re a family-run business passionate about bikes, offering expert service to riders in Portsmouth, Fareham, Gosport, Havant, Southampton, Petersfield, and Chichester.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/shop">
@@ -119,7 +119,7 @@ export default function Home() {
               <div className="absolute -inset-4 bg-primary/5 rounded-lg transform -rotate-2" />
               <img 
                 src="/images/user-image-4.jpg" 
-                alt="Our Workshop" 
+                alt="Inside our motorcycle repair workshop in Fareham, serving Gosport and Havant" 
                 className="relative rounded-lg shadow-2xl border border-gray-800 grayscale hover:grayscale-0 transition-all duration-500"
               />
               <div className="absolute -bottom-6 -right-6 bg-card p-6 border border-primary/20 shadow-xl hidden md:block">
@@ -176,7 +176,7 @@ export default function Home() {
                 <div className="h-48 w-full overflow-hidden relative">
                   <img 
                     src={service.image} 
-                    alt={service.title}
+                    alt={`${service.title} - Specialist motorcycle service in Hampshire`}
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                   />
                   <div className="absolute inset-0 bg-black/50 group-hover:bg-black/30 transition-colors duration-300" />
@@ -266,7 +266,7 @@ export default function Home() {
               <div className="absolute inset-0 bg-primary/10 transform translate-x-4 translate-y-4 border border-primary/20" />
               <img 
                 src="/images/user-image-5.jpg" 
-                alt="Motorcycle Parts" 
+                alt="Quality used motorcycle parts and spares available for delivery across the UK" 
                 className="relative w-full h-auto border border-gray-800 grayscale hover:grayscale-0 transition-all duration-500"
               />
             </div>
@@ -283,7 +283,7 @@ export default function Home() {
               <div key={i} className="relative group overflow-hidden h-64 md:h-80">
                 <img 
                   src={img} 
-                  alt={`Gallery Image ${i + 1}`} 
+                  alt={`Custom motorcycle build and restoration project by BL Motorcycles - Image ${i + 1}`} 
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                 />
                 <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center border border-primary/20">
