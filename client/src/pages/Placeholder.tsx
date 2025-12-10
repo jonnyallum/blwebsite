@@ -1,4 +1,4 @@
-import { useLocation } from "wouter";
+import { useLocation, Link } from "wouter";
 import { TechButton, SectionTitle } from "@/components/ui/tech-components";
 
 export default function Placeholder() {
@@ -56,18 +56,18 @@ export default function Placeholder() {
           {content.text}
         </p>
         <div className="flex flex-col sm:flex-row justify-center gap-4">
-          <a href="/">
+          <Link href="/">
             <TechButton variant="outline">Return Home</TechButton>
-          </a>
+          </Link>
           {content.showEbay && (
             <a href="https://ebay.us/m/zVcLaj" target="_blank" rel="noopener noreferrer">
               <TechButton>Visit eBay Store</TechButton>
             </a>
           )}
           {location === '/services' && (
-             <a href="/contact">
+             <Link href="/contact">
                <TechButton>Book Now</TechButton>
-             </a>
+             </Link>
           )}
         </div>
       </div>
