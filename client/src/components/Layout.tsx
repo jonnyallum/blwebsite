@@ -40,8 +40,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         )}
       >
         <div className="container mx-auto flex items-center justify-between">
-          <Link href="/">
-            <a className="flex items-center gap-3 group">
+          <Link href="/" className="flex items-center gap-3 group">
               <img
                 src="/images/logo-transparent.png"
                 alt="B&L Motorcycles"
@@ -55,25 +54,24 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                   Parts & Repairs
                 </p>
               </div>
-            </a>
           </Link>
 
           {/* Desktop Nav */}
           <div className="hidden md:flex items-center gap-8">
             {navLinks.map((link) => (
-              <Link key={link.name} href={link.href}>
-                <a
-                  className={cn(
-                    "text-sm font-heading font-medium uppercase tracking-wider transition-colors hover:text-primary relative py-1",
-                    location === link.href ? "text-primary" : "text-white"
-                  )}
-                >
-                  {link.name}
-                  <span className={cn(
-                    "absolute bottom-0 left-0 w-full h-[1px] bg-primary transform scale-x-0 transition-transform duration-300 origin-right",
-                    location === link.href && "scale-x-100 origin-left"
-                  )} />
-                </a>
+              <Link 
+                key={link.name} 
+                href={link.href}
+                className={cn(
+                  "text-sm font-heading font-medium uppercase tracking-wider transition-colors hover:text-primary relative py-1",
+                  location === link.href ? "text-primary" : "text-white"
+                )}
+              >
+                {link.name}
+                <span className={cn(
+                  "absolute bottom-0 left-0 w-full h-[1px] bg-primary transform scale-x-0 transition-transform duration-300 origin-right",
+                  location === link.href && "scale-x-100 origin-left"
+                )} />
               </Link>
             ))}
             <a 
@@ -101,13 +99,13 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           <div className="md:hidden absolute top-full left-0 w-full bg-black/98 border-b border-primary/20 backdrop-blur-xl animate-in slide-in-from-top-5">
             <div className="flex flex-col p-6 gap-4">
               {navLinks.map((link) => (
-                <Link key={link.name} href={link.href}>
-                  <a
-                    className="text-lg font-heading font-bold uppercase text-white hover:text-primary transition-colors"
-                    onClick={() => setMenuOpen(false)}
-                  >
-                    {link.name}
-                  </a>
+                <Link 
+                  key={link.name} 
+                  href={link.href}
+                  className="text-lg font-heading font-bold uppercase text-white hover:text-primary transition-colors"
+                  onClick={() => setMenuOpen(false)}
+                >
+                  {link.name}
                 </Link>
               ))}
               <a 
@@ -155,11 +153,9 @@ export default function Layout({ children }: { children: React.ReactNode }) {
               <ul className="space-y-3">
                 {navLinks.map((link) => (
                   <li key={link.name}>
-                    <Link href={link.href}>
-                      <a className="text-gray-400 hover:text-primary transition-colors text-sm uppercase tracking-wide flex items-center gap-2">
+                    <Link href={link.href} className="text-gray-400 hover:text-primary transition-colors text-sm uppercase tracking-wide flex items-center gap-2">
                         <span className="w-1 h-1 bg-primary rounded-full" />
                         {link.name}
-                      </a>
                     </Link>
                   </li>
                 ))}
