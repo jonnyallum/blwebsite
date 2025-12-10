@@ -7,7 +7,7 @@ export default function Home() {
     { 
       icon: Wrench, 
       title: 'Service & Repairs', 
-      desc: 'Expert maintenance for all makes and models. From routine servicing to complex engine rebuilds, our experienced team keeps your bike running at its peak. Serving riders across Portsmouth, Fareham, and the wider Hampshire area.',
+      desc: 'Expert maintenance for all makes and models. From routine servicing to full diagnostics, our experienced team keeps your bike running at its peak. Serving riders across Portsmouth, Fareham, and the wider Hampshire area.',
       image: '/images/user-image-6.jpg'
     },
     { 
@@ -20,13 +20,13 @@ export default function Home() {
       icon: Gauge, 
       title: 'Precision Balancing', 
       desc: 'Professional carburetor balancing and throttle body balancing to ensure smooth power delivery and optimal engine performance.',
-      image: '/images/user-image-8.jpg'
+      image: '/images/services-bg.jpg'
     },
     { 
       icon: Zap, 
       title: 'Ultrasonic Cleaning', 
       desc: 'Deep cleaning for intricate parts using advanced ultrasonic technology, perfect for carburetors, injectors, and brake components.',
-      image: '/images/user-image-9.jpg'
+      image: '/images/parts-bg.jpg'
     },
     { 
       icon: Package, 
@@ -36,9 +36,15 @@ export default function Home() {
     },
     { 
       icon: Droplet, 
-      title: 'Engine Oil', 
-      desc: 'Premium oils and fluids for optimal performance. We supply top-grade lubricants to ensure your engine stays protected and powerful.',
+      title: 'Brake Restoration', 
+      desc: 'Complete brake system restoration and rebuilding. We strip, clean, and rebuild calipers and master cylinders to factory standards for safety and performance.',
       image: '/images/user-image-11.jpg'
+    },
+    { 
+      icon: Settings, 
+      title: 'Recommissioning', 
+      desc: 'Getting your bike back on the road after years of storage. We handle everything from fuel system cleaning to safety checks to get your machine running reliably again.',
+      image: '/images/user-image-7.jpg'
     }
   ];
 
