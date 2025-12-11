@@ -14,7 +14,7 @@ export default function Home() {
       icon: Settings, 
       title: 'Specialist Restoration', 
       desc: 'Dedicated restoration services including specialist brake restoration and carburetor restoration. We are the go-to carb specialists in Portsmouth and Southampton for bringing classic components back to life.',
-      image: '/images/user-image-7.jpg'
+      image: '/images/mechanic-work.jpg'
     },
     { 
       icon: Gauge, 
@@ -44,7 +44,7 @@ export default function Home() {
       icon: Settings, 
       title: 'Recommissioning', 
       desc: 'Getting your bike back on the road after years of storage. We handle everything from fuel system cleaning to safety checks to get your machine running reliably again.',
-      image: '/images/user-image-7.jpg'
+      image: '/images/garage-vintage.jpg'
     }
   ];
 

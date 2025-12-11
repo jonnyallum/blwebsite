@@ -141,7 +141,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                 Proudly family-run and based in Hampshire, UK. We live and breathe motorcycles, offering quality used parts and expert repairs.
               </p>
               <div className="flex gap-4">
-                <a href="#" className="text-gray-400 hover:text-primary transition-colors"><Facebook className="w-5 h-5" /></a>
+                <a href="https://www.facebook.com/share/14YGQshDRou/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-primary transition-colors"><Facebook className="w-5 h-5" /></a>
                 <a href="#" className="text-gray-400 hover:text-primary transition-colors"><Instagram className="w-5 h-5" /></a>
                 <a href="#" className="text-gray-400 hover:text-primary transition-colors"><Search className="w-5 h-5" /></a>
               </div>
@@ -169,6 +169,14 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                 <li className="flex items-start gap-3 text-gray-400 text-sm">
                   <MapPin className="w-5 h-5 text-primary shrink-0" />
                   <span>95 Newgate Lane, Peel Common,<br />Fareham, PO14 1BA,<br />United Kingdom</span>
+                </li>
+                <li className="flex items-center gap-3 text-gray-400 text-sm">
+                  <Phone className="w-5 h-5 text-primary shrink-0" />
+                  <a href="tel:07881274193" className="hover:text-primary transition-colors">07881 274193</a>
+                </li>
+                <li className="flex items-center gap-3 text-gray-400 text-sm">
+                  <Mail className="w-5 h-5 text-primary shrink-0" />
+                  <a href="mailto:blmotorcyclesltd@gmail.com" className="hover:text-primary transition-colors">blmotorcyclesltd@gmail.com</a>
                 </li>
                 <li className="flex items-center gap-3 text-gray-400 text-sm">
                   <ShoppingBag className="w-5 h-5 text-primary shrink-0" />
