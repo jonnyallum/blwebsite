@@ -246,6 +246,45 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             </div>
           </div>
 
+          {/* Facebook Feed Section */}
+          <div className="border-t border-gray-800 pt-12 pb-8">
+            <div className="flex items-center justify-between mb-6">
+              <h4 className="text-primary font-heading font-bold text-lg uppercase tracking-wider flex items-center gap-2">
+                <Facebook className="w-5 h-5" /> Join us on Facebook
+              </h4>
+              <a href="https://www.facebook.com/share/14YGQshDRou/" target="_blank" rel="noopener noreferrer" className="text-xs font-mono uppercase tracking-wider text-gray-400 hover:text-primary transition-colors">
+                View Page →
+              </a>
+            </div>
+            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
+              {[
+                '/images/user-image-6.jpg',
+                '/images/mechanic-work.jpg',
+                '/images/user-image-11.jpg',
+                '/images/garage-vintage.jpg',
+                '/images/user-image-10.jpg',
+                '/images/ultrasonic-clean.jpg'
+              ].map((img, i) => (
+                <a 
+                  key={i} 
+                  href="https://www.facebook.com/share/14YGQshDRou/" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="group relative aspect-square overflow-hidden bg-gray-900 border border-gray-800"
+                >
+                  <img 
+                    src={img} 
+                    alt="B&L Motorcycles Facebook update" 
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 opacity-70 group-hover:opacity-100"
+                  />
+                  <div className="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                    <Facebook className="w-6 h-6 text-white drop-shadow-lg" />
+                  </div>
+                </a>
+              ))}
+            </div>
+          </div>
+
           <div className="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-gray-500 font-mono uppercase tracking-wider">
             <p>© 2025 B&L Motorcycles Ltd. All rights reserved.</p>
             <p>B&L Motorcycles – Trusted Parts & Repairs UK</p>
