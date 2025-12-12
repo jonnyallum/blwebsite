@@ -44,8 +44,9 @@ export default function Home() {
       icon: Settings, 
       title: 'Recommissioning', 
       desc: 'Getting your bike back on the road after years of storage. We handle everything from fuel system cleaning to safety checks to get your machine running reliably again.',
-      image: '/images/about-workshop.jpg' 
-  ];
+      image: 'https://i.ibb.co/fYwsZhLC/20250505-133358.jpg
+            }
+      ];
 
   const galleryImages = [
     '/images/user-image-1.png',
