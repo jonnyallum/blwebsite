@@ -266,7 +266,7 @@ export default function Home() {
             <div className="order-1 md:order-2 relative">
               <div className="absolute inset-0 bg-primary/10 transform translate-x-4 translate-y-4 border border-primary/20" />
               <img 
-                src="/images/user-image-5.jpg" 
+                src="https://i.ibb.co/PvTtJj5D/Cerakote-cylinders-3.jpg 
                 alt="Quality used motorcycle parts and spares available for delivery across the UK" 
                 className="relative w-full h-auto border border-gray-800 grayscale hover:grayscale-0 transition-all duration-500"
               />
