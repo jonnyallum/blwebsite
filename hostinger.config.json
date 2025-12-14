@@ -1,0 +1,8 @@
+{
+  "framework": "vite",
+  "nodeVersion": "22.x",
+  "rootDirectory": ".",
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist/public",
+  "installCommand": "npm install"
+}
