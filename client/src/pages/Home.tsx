@@ -9,28 +9,28 @@ export default function Home() {
       title: 'Service & Repairs', 
       desc: 'Expert maintenance for all makes and models. From routine servicing to full diagnostics, our experienced team keeps your bike running at its peak. Serving riders across Portsmouth, Fareham, and the wider Hampshire area.',
       image: '/images/user-image-6.jpg',
-      link: '#contact'
+      link: '/services/service-repairs'
     },
     { 
       icon: Settings, 
       title: 'Specialist Restoration', 
       desc: 'Dedicated restoration services including specialist brake restoration and carburetor restoration. We are the go-to carb specialists in Portsmouth and Southampton for bringing classic components back to life.',
       image: '/images/mechanic-work.jpg',
-      link: '#contact'
+      link: '/services/specialist-restoration'
     },
     { 
       icon: Gauge, 
       title: 'Carb Specialist', 
       desc: 'Expert carburetor and throttle body specialists. Carbs are stripped, ultrasonic cleaned, serviced, and precision balanced for optimal performance. We are the go-to carb specialists in Portsmouth and Southampton.',
       image: '/images/balancing-gauges.jpg',
-      link: '#contact'
+      link: '/services/carb-specialist'
     },
     { 
       icon: Zap, 
       title: 'Ultrasonic Cleaning', 
       desc: 'Deep cleaning for intricate parts using advanced ultrasonic technology, perfect for carburetors, injectors, and brake components.',
       image: '/images/ultrasonic-clean.jpg',
-      link: '#contact'
+      link: '/services/ultrasonic-cleaning'
     },
     { 
       icon: Package, 
@@ -44,14 +44,14 @@ export default function Home() {
       title: 'Brake Restoration', 
       desc: 'Complete brake system restoration and rebuilding. We strip, clean, and rebuild calipers and master cylinders to factory standards for safety and performance.',
       image: '/images/user-image-10.jpg',
-      link: '#contact'
+      link: '/services/brake-restoration'
     },
       {
         icon: Settings,
         title: 'Recommissioning',
         desc: 'Getting your bike back on the road after years of storage. We handle everything from fuel system cleaning to safety checks to get your machine running reliably again.',
         image: '/images/commissioning-new.jpg',
-        link: '#contact'
+        link: '/services/recommissioning'
       }
     ];
 
