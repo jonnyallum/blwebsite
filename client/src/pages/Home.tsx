@@ -8,43 +8,50 @@ export default function Home() {
       icon: Wrench, 
       title: 'Service & Repairs', 
       desc: 'Expert maintenance for all makes and models. From routine servicing to full diagnostics, our experienced team keeps your bike running at its peak. Serving riders across Portsmouth, Fareham, and the wider Hampshire area.',
-      image: '/images/user-image-6.jpg'
+      image: '/images/user-image-6.jpg',
+      link: '#contact'
     },
     { 
       icon: Settings, 
       title: 'Specialist Restoration', 
       desc: 'Dedicated restoration services including specialist brake restoration and carburetor restoration. We are the go-to carb specialists in Portsmouth and Southampton for bringing classic components back to life.',
-      image: '/images/mechanic-work.jpg'
+      image: '/images/mechanic-work.jpg',
+      link: '#contact'
     },
     { 
       icon: Gauge, 
-      title: 'Precision Balancing', 
-      desc: 'Professional carburetor balancing and throttle body balancing to ensure smooth power delivery and optimal engine performance.',
-      image: '/images/balancing-gauges.jpg'
+      title: 'Carb Specialist', 
+      desc: 'Expert carburetor and throttle body specialists. Carbs are stripped, ultrasonic cleaned, serviced, and precision balanced for optimal performance. We are the go-to carb specialists in Portsmouth and Southampton.',
+      image: '/images/balancing-gauges.jpg',
+      link: '#contact'
     },
     { 
       icon: Zap, 
       title: 'Ultrasonic Cleaning', 
       desc: 'Deep cleaning for intricate parts using advanced ultrasonic technology, perfect for carburetors, injectors, and brake components.',
-      image: '/images/ultrasonic-clean.jpg'
+      image: '/images/ultrasonic-clean.jpg',
+      link: '#contact'
     },
     { 
       icon: Package, 
       title: 'New & Used Parts', 
       desc: 'Quality parts at competitive prices. We stock a wide range of second-hand motorcycle spares, fully inspected and ready for your ride.',
-      image: '/images/user-image-11.jpg'
+      image: '/images/user-image-11.jpg',
+      link: 'https://ebay.us/m/zVcLaj'
     },
     { 
       icon: Droplet, 
       title: 'Brake Restoration', 
       desc: 'Complete brake system restoration and rebuilding. We strip, clean, and rebuild calipers and master cylinders to factory standards for safety and performance.',
-      image: '/images/user-image-10.jpg'
+      image: '/images/user-image-10.jpg',
+      link: '#contact'
     },
       {
         icon: Settings,
         title: 'Recommissioning',
         desc: 'Getting your bike back on the road after years of storage. We handle everything from fuel system cleaning to safety checks to get your machine running reliably again.',
-        image: 'https://i.ibb.co/fYwsZhLC/20250505-133358.jpg'
+        image: '/images/commissioning-new.jpg',
+        link: '#contact'
       }
     ];
 
@@ -173,7 +180,14 @@ export default function Home() {
           
           <div className="grid md:grid-cols-3 gap-8">
             {services.map((service, i) => (
-              <TechCard key={i} className="h-full flex flex-col overflow-hidden group p-0">
+              <a 
+                key={i}
+                href={service.link} 
+                target={service.link?.startsWith('http') ? '_blank' : '_self'}
+                rel={service.link?.startsWith('http') ? 'noopener noreferrer' : undefined}
+                className="block h-full"
+              >
+                <TechCard className="h-full flex flex-col overflow-hidden group p-0 cursor-pointer hover:border-primary/50 transition-all">
                 <div className="h-48 w-full overflow-hidden relative">
                   <img 
                     src={service.image} 
@@ -194,6 +208,7 @@ export default function Home() {
                   </p>
                 </div>
               </TechCard>
+              </a>
             ))}
           </div>
           
@@ -266,7 +281,7 @@ export default function Home() {
             <div className="order-1 md:order-2 relative">
               <div className="absolute inset-0 bg-primary/10 transform translate-x-4 translate-y-4 border border-primary/20" />
               <img
-                src="https://i.ibb.co/PvTtJj5D/Cerakote-cylinders-3.jpg"
+                src="/images/products-new.jpg"
                 alt="Quality used motorcycle parts and spares available for delivery across the UK"
                 className="relative w-full h-auto border border-gray-800 grayscale hover:grayscale-0 transition-all duration-500"
               />
