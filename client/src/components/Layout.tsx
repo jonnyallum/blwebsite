@@ -163,7 +163,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             </div>
 
             {/* Contact Info */}
-            <div>
+            <div id="contact">
               <h4 className="text-primary font-heading font-bold text-lg uppercase tracking-wider mb-6">Contact Us</h4>
               <ul className="space-y-4">
                 <li className="flex items-start gap-3 text-gray-400 text-sm">
