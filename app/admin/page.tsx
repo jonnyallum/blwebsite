@@ -4,7 +4,7 @@ import { useEffect, useState, useMemo, useCallback } from "react";
 import { createClient } from "@supabase/supabase-js";
 
 // ─── Supabase ─────────────────────────────────────────────────────────────────
-const SUPABASE_URL = "https://ddjuoeyaoxllockcusgf.supabase.co";
+const SUPABASE_URL = "https://kenaardqwnpeqtwukdnb.supabase.co";
 const SUPABASE_ANON_KEY = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
 const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
@@ -135,7 +135,10 @@ function LoginScreen({ onLogin }: { onLogin: (email: string) => void }) {
       onLogin(email.trim());
     }
     setLoading(false);
-  };>
+  };
+
+  return (
+    <div className="min-h-screen bg-zinc-950 flex items-center justify-center">
       <div className="w-full max-w-sm">
         <div className="mb-8 text-center">
           <div className="inline-flex items-center justify-center w-14 h-14 rounded-xl bg-orange-500 mb-4">
@@ -191,7 +194,7 @@ function LoginScreen({ onLogin }: { onLogin: (email: string) => void }) {
 // ─── Main Dashboard ───────────────────────────────────────────────────────────
 export default function AdminPage() {
   // Auth
-  const [authed, setAuthed]     = useState(false);
+  const [authed, setAuthed]       = useState(false);
   const [userEmail, setUserEmail] = useState("");
   const [authChecked, setAuthChecked] = useState(false);
 
@@ -207,9 +210,41 @@ export default function AdminPage() {
 
   // Order Matrix filters
   const [orderFilter, setOrderFilter] = useState<string>("all");
-  const [search,      setSearch]      = useState<string>("");tLastRefresh(new Date());
+  const [search,      setSearch]      = useState<string>("");
+
+  // ── Data loaders ─────────────────────────────────────────────────────────────
+  const loadOrders = useCallback(async () => {
+    const { data } = await supabase.from("orders").select("*").order("created_at", { ascending: false }).limit(500);
+    if (data) setOrders(data as Order[]);
+  }, []);
+
+  const loadCustomers = useCallback(async () => {
+    const { data } = await supabase.from("customers").select("*").order("created_at", { ascending: false }).limit(500);
+    if (data) setCustomers(data as Customer[]);
+  }, []);
+
+  const loadProducts = useCallback(async () => {
+    const { data } = await supabase.from("products").select("*").order("created_at", { ascending: false }).limit(500);
+    if (data) setProducts(data as Product[]);
+  }, []);
+
+  const refreshAll = useCallback(async () => {
+    setLoading(true);
+    await Promise.all([loadOrders(), loadCustomers(), loadProducts()]);
+    setLastRefresh(new Date());
     setLoading(false);
   }, [loadOrders, loadCustomers, loadProducts]);
+
+  // ── Auth check on mount ──────────────────────────────────────────────────────
+  useEffect(() => {
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      if (session?.user) {
+        setAuthed(true);
+        setUserEmail(session.user.email || "");
+      }
+      setAuthChecked(true);
+    });
+  }, []);
 
   useEffect(() => {
     if (authed) refreshAll();
@@ -230,11 +265,9 @@ export default function AdminPage() {
   const weekOrders     = useMemo(() => orders.filter(o => new Date(o.created_at).getTime() >= now7d), [orders, now7d]);
 
   // ── Filtered orders for the Order Matrix table ─────────────────────────────
-  // BUG FIX: all status comparisons are case-insensitive (.toLowerCase())
   const filtered = useMemo(() => {
     let f: Order[] = orders;
 
-    // Status / channel filter
     if (orderFilter === "pending") {
       f = f.filter(o => ["pending","ordering"].includes(o.status?.toLowerCase()));
     } else if (orderFilter === "dispatched") {
@@ -248,9 +281,7 @@ export default function AdminPage() {
     } else if (orderFilter === "week") {
       f = f.filter(o => new Date(o.created_at).getTime() >= now7d);
     }
-    // orderFilter === "all" → keep everything
 
-    // Search filter (only applied when search is non-empty)
     const q = search.trim().toLowerCase();
     if (q) {
       f = f.filter(o =>
@@ -267,8 +298,8 @@ export default function AdminPage() {
   }, [orders, orderFilter, search, now7d]);
 
   // ── Revenue stats ──────────────────────────────────────────────────────────
-  const totalRevenue   = useMemo(() => orders.reduce((s, o) => s + orderTotal(o), 0), [orders]);
-  const weekRevenue    = useMemo(() => weekOrders.reduce((s, o) => s + orderTotal(o), 0), [weekOrders]);
+  const totalRevenue = useMemo(() => orders.reduce((s, o) => s + orderTotal(o), 0), [orders]);
+  const weekRevenue  = useMemo(() => weekOrders.reduce((s, o) => s + orderTotal(o), 0), [weekOrders]);
 
   // ─── Sign out ─────────────────────────────────────────────────────────────
   const signOut = async () => {
@@ -391,7 +422,12 @@ export default function AdminPage() {
           </div>
         </div>
 
-        <div className="px-6 py-6">& (
+        <div className="px-6 py-6">
+
+          {/* ════════════════════════════════════════════════════════════════ */}
+          {/* COMMAND CENTRE                                                   */}
+          {/* ════════════════════════════════════════════════════════════════ */}
+          {tab === "command" && (
             <div className="space-y-6">
               {/* KPI cards */}
               <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
@@ -602,7 +638,7 @@ export default function AdminPage() {
                               </span>
                             </td>
                             <td className="px-4 py-3 text-zinc-400">
-                              {Array.isArray(o.items) ? o.items.length : (typeof o.items === "string" ? "—" : "—")}
+                              {Array.isArray(o.items) ? o.items.length : "—"}
                             </td>
                             <td className="px-4 py-3 font-mono text-green-400">{fmt(orderTotal(o))}</td>
                             <td className="px-4 py-3">
@@ -671,7 +707,7 @@ export default function AdminPage() {
                 </div>
               </div>
 
-              {/* If no separate customers table, derive from orders */}
+              {/* Derive customers from orders if no dedicated table */}
               {customers.length === 0 && orders.length > 0 && (
                 <div className="bg-zinc-900 border border-zinc-800 rounded-xl overflow-hidden">
                   <div className="px-4 py-3 border-b border-zinc-800">
@@ -896,87 +932,7 @@ export default function AdminPage() {
                   {[
                     { label: "Orders This Week",   value: weekOrders.length,       unit: "orders",  color: "text-white" },
                     { label: "Revenue This Week",   value: fmt(weekRevenue),        unit: "",         color: "text-green-400" },
-                    { label: "Avg Order Value",     value: weekOrders.length ? fmt(weekRevenue/weekOrders.length) : "£0.00",  unit: "", color: "text-teal-400" },
-                    { label: "Pending (all time)",  value: pendingOrders.length,    unit: "orders",  color: "text-yellow-400" },
-                  ].map(s => (
-                    <div key={s.label} className="bg-zinc-800/50 rounded-xl p-4">
-                      <div className="text-[10px] text-zinc-500 mb-1">{s.label}</div>
-                      <div className={`text-2xl font-bold ${s.color}`}>{s.value}</div>
-                      {s.unit && <div className="text-[10px] text-zinc-600">{s.unit}</div>}
-                    </div>
-                  ))}
-                </div>
-
-                {/* Status breakdown */}
-                <div className="mb-6">
-                  <h3 className="text-xs font-semibold text-zinc-400 mb-3 uppercase tracking-wider">Order Status Breakdown (All Time)</h3>
-                  <div className="space-y-2">
-                    {[
-                      { label: "Pending / Ordering",        count: pendingOrders.length,    color: "bg-yellow-500" },
-                      { label: "Dispatched / Delivered",    count: dispatchedOrds.length,   color: "bg-teal-500" },
-                      { label: "Failed / Cancelled",        count: failedOrders.length,     color: "bg-red-500" },
-                      { label: "Overdue (3d+)",             count: overdueOrders.length,    color: "bg-orange-500" },
-                    ].map(row => (
-                      <div key={row.label} className="flex items-center gap-3">
-                        <div className="w-28 text-[10px] text-zinc-500 shrink-0">{row.label}</div>
-                        <div className="flex-1 bg-zinc-800 rounded-full h-2">
-                          <div
-                            className={`h-2 rounded-full ${row.color}`}
-                            style={{ width: orders.length ? `${(row.count / orders.length) * 100}%` : "0%" }}
-                          />
-                        </div>
-                        <div className="text-xs text-zinc-300 font-mono w-8 text-right shrink-0">{row.count}</div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Channel breakdown */}
-                <div>
-                  <h3 className="text-xs font-semibold text-zinc-400 mb-3 uppercase tracking-wider">Channel Breakdown (All Time)</h3>
-                  <div className="space-y-2">
-                    {Object.entries(
-                      orders.reduce((acc, o) => {
-                        const ch = (o.channel || "unknown").toLowerCase();
-                        acc[ch] = (acc[ch] || 0) + 1;
-                        return acc;
-                      }, {} as Record<string, number>)
-                    ).sort((a, b) => b[1] - a[1]).map(([ch, count]) => (
-                      <div key={ch} className="flex items-center gap-3">
-                        <span className={`w-16 text-center px-2 py-0.5 rounded text-[10px] font-bold uppercase shrink-0 ${channelBadge(ch)}`}>{ch}</span>
-                        <div className="flex-1 bg-zinc-800 rounded-full h-2">
-                          <div
-                            className="h-2 rounded-full bg-blue-500"
-                            style={{ width: orders.length ? `${(count / orders.length) * 100}%` : "0%" }}
-                          />
-                        </div>
-                        <div className="text-xs text-zinc-300 font-mono w-8 text-right shrink-0">{count}</div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-
-              {/* This week's orders */}
-              <div className="bg-zinc-900 border border-zinc-800 rounded-xl overflow-hidden">
-                <div className="px-4 py-3 border-b border-zinc-800">
-                  <span className="text-sm font-medium text-zinc-200">Orders This Week ({weekOrders.length})</span>
-                </div>
-                <table className="w-full text-xs">
-                  <thead>
-                    <tr className="border-b border-zinc-800">
-                      <th className="text-left px-4 py-3 text-zinc-500 font-medium">Customer</th>
-                      <th className="text-left px-4 py-3 text-zinc-500 font-medium">Channel</th>
-                      <th className="text-left px-4 py-3 text-zinc-500 font-medium">Total</th>
-                      <th className="text-left px-4 py-3 text-zinc-500 font-medium">Status</th>
-                      <th className="text-left px-4 py-3 text-zinc-500 font-medium">Date</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {weekOrders.map(o => (
-                      <tr key={o.id} className="border-b border-zinc-800/50 hover:bg-zinc-800/30">
-                        <td className="px-4 py-3 text-zinc-200">{o.customer_name || "—"          { label: "Revenue This Week",   value: fmt(weekRevenue),        unit: "",         color: "text-green-400" },
-                    { label: "Avg Order Value",     value: weekOrders.length ? fmt(weekRevenue/weekOrders.length) : "£0.00",  unit: "", color: "text-teal-400" },
+                    { label: "Avg Order Value",     value: weekOrders.length ? fmt(weekRevenue/weekOrders.length) : "£0.00", unit: "", color: "text-teal-400" },
                     { label: "Pending (all time)",  value: pendingOrders.length,    unit: "orders",  color: "text-yellow-400" },
                   ].map(s => (
                     <div key={s.label} className="bg-zinc-800/50 rounded-xl p-4">
