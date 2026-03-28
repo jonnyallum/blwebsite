@@ -30,22 +30,17 @@ jobs:
           NEXT_PUBLIC_GA_ID: ${{ secrets.NEXT_PUBLIC_GA_ID }}
         run: npm run build
 
-      - name: Create deployment ZIP
-        run: |
-          mkdir -p blwebsite-main
-          rsync -a --exclude='node_modules' --exclude='.git' --exclude='.env*' \
-            --exclude='.next/cache' \
-            . blwebsite-main/
-          zip -r blwebsite-deploy.zip blwebsite-main/
-          ls -lh blwebsite-deploy.zip
-
-      - name: FTP Deploy ZIP to Hostinger
+      - name: Deploy to Hostinger via FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
           server: 92.112.189.250
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: ./
-          server-dir: /public_html/
-          include: "blwebsite-deploy.zip"
-          dangerous-clean-slate: false
+          server-dir: /home/u384342620/domains/blmotorcycles.co.uk/public_html/
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/node_modules/**
+            **/.env*
+            **/.next/cache/**
