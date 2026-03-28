@@ -37,7 +37,7 @@ jobs:
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: ./
-          server-dir: /home/u384342620/domains/blmotorcycles.co.uk/public_html/
+          server-dir: /home/u384342620/domains/blmotorcyclesltd.co.uk/public_html/
           exclude: |
             **/.git*
             **/.git*/**
